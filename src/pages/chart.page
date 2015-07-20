@@ -1,0 +1,52 @@
+<apex:page controller="ChartController" extensions="CandidatesDemo">
+<!-- testing other controller fucntions  -->
+<apex:outputPanel id="out">
+    <apex:outputText value="Hello "/>
+    <apex:actionStatus startText="requesting..." id="myStatus">
+        <apex:facet name="stop">{!username}</apex:facet>
+    </apex:actionStatus>
+    </apex:outputPanel>
+
+<!-- example of gauge series -->
+    <apex:chart height="250" width="450" animate="true" legend="true" data="{!data}">
+    <apex:axis type="Gauge" position="left" margin="-10" 
+        minimum="0" maximum="100" steps="10"/>
+    <apex:gaugeSeries dataField="data1" highlight="true" tips="true" donut="25" needle="false"
+        colorSet="#D3d3d3, #0F0">
+        <apex:chartLabel display="over"/>
+    </apex:gaugeSeries>
+</apex:chart>
+    <!-- example of line series -->
+   <apex:chart height="400" width="700" data="{!data}">
+          <apex:axis type="Numeric" position="left" fields="data1,data2" 
+            title="Opportunities Closed" grid="true"/>
+          <apex:axis type="Category" position="bottom" fields="name" 
+            title="Month of the Year">
+          </apex:axis>
+          <apex:lineSeries axis="left" fill="true" xField="name" yField="data1"
+              markerType="cross" markerSize="4" markerFill="#FF0000"/>
+          <apex:lineSeries axis="left" xField="name" yField="data2" 
+            markerType="circle" markerSize="4" markerFill="#8E35EF"/>
+    </apex:chart>
+    <apex:chart height="400" width="700" data="{!data}">
+    <apex:legend position="right"/>
+
+          <apex:axis type="Numeric" position="left" fields="data1,data2" 
+            title="Opportunities Closed" grid="true"/>
+        <apex:axis type="Numeric" position="right" fields="data3" 
+            title="Revenue (millions)"/>
+          <apex:axis type="Category" position="bottom" fields="name" 
+            title="Month of the Year"/>
+            
+          <apex:lineSeries axis="left" fill="true" xField="name" yField="data1"
+              markerType="cross" markerSize="4" markerFill="#FF0000"/>
+          <apex:lineSeries axis="left" xField="name" yField="data2" 
+            markerType="circle" markerSize="4" markerFill="#8E35EF"/>
+        <apex:barSeries orientation="vertical" axis="right" 
+            xField="name" yField="data3"/>
+            
+    </apex:chart>
+    
+    <!-- component section -->
+     <c:myComponent myValue="My component's value" borderColor="blue" />
+</apex:page>

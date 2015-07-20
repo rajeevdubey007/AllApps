@@ -1,0 +1,4 @@
+<apex:page >
+<iframe height="200px" id="theIframe" name="theIframe" src="http://w3school.com" width="100%" scrolling="false"></iframe>
+<apex:image id="theImage" value="{!$Resource.tropicalBeach}" width="500"/>
+</apex:page>
