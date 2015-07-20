@@ -12,7 +12,7 @@
         <apex:actionstatus id="status" startText="testing...">
             <apex:facet name="stop">
                 <apex:outputPanel >
-                    <p>You have select:</p>
+                    <p>You have selected:</p>
                     <apex:dataList value="{!country}" var="c">{!c}</apex:dataList>
                 </apex:outputPanel>
             </apex:facet>
